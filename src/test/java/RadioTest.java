@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+    //Stations
     @Test
     public void shouldSetStation() {
         Radio station = new Radio();
@@ -46,6 +48,16 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldSetStationUppMax() {
+        Radio station = new Radio();
+        station.setCurrentStation(11);
+
+        int expected = 0;
+        int actual = station.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetStationMin() {
         Radio station = new Radio();
         station.setCurrentStation(0);
@@ -56,6 +68,17 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSetStationUnderMin() {
+        Radio station = new Radio();
+        station.setCurrentStation(-1);
+
+        int expected = 0;
+        int actual = station.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    //Volume
     @Test
     public void shouldSetVolume() {
         Radio volume = new Radio();
@@ -89,6 +112,17 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldSetVolumeIncreaseMaxUpper() {
+        Radio volume = new Radio();
+        volume.setCurrentVolume(11);
+        volume.downVolume();
+
+        int expected = 0;
+        int actual = volume.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetVolumeDown() {
         Radio volume = new Radio();
         volume.setCurrentVolume(5);
@@ -103,6 +137,17 @@ public class RadioTest {
     public void shouldSetVolumeDownMin() {
         Radio volume = new Radio();
         volume.setCurrentVolume(0);
+        volume.downVolume();
+
+        int expected = 0;
+        int actual = volume.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetVolumeUnderDownMin() {
+        Radio volume = new Radio();
+        volume.setCurrentVolume(-1);
         volume.downVolume();
 
         int expected = 0;
