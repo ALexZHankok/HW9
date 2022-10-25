@@ -103,10 +103,10 @@ public class RadioTest {
     @Test
     public void shouldSetVolumeIncreaseMax() {
         Radio volume = new Radio();
-        volume.setCurrentVolume(10);
+        volume.setCurrentVolume(100);
         volume.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = volume.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -114,7 +114,7 @@ public class RadioTest {
     @Test
     public void shouldSetVolumeIncreaseMaxUpper() {
         Radio volume = new Radio();
-        volume.setCurrentVolume(11);
+        volume.setCurrentVolume(101);
         volume.downVolume();
 
         int expected = 0;
